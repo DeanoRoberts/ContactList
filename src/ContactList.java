@@ -31,14 +31,72 @@ public class ContactList
                 Person next = contacts.get(j + 1);
                 Person current = contacts.get(j);
 
-                if ()
-
-
+                if (sortBy == 0 && (current.getFirstName().compareTo(next.getFirstName()) < 0))
+                {
+                    Person mid = contacts.get(j);
+                    contacts.set(j, contacts.get(j+ 1));
+                    contacts.set(j + 1, mid);
+                }
+                else if (sortBy == 1 && current.getLastName().compareTo(next.getLastName()) < 0)
+                {
+                    Person mid = contacts.get(j);
+                    contacts.set(j, contacts.get(j+ 1));
+                    contacts.set(j + 1, mid);
+                }
+                else if (sortBy == 2 && current.getPhoneNumber().compareTo(next.getPhoneNumber()) < 0)
+                {
+                    Person mid = contacts.get(j);
+                    contacts.set(j, contacts.get(j+ 1));
+                    contacts.set(j + 1, mid);
+                }
 
 
             }
 
         }
+    }
+
+
+    public Person searchByFirstName(String firstName)
+    {
+        for (Person contact : contacts)
+        {
+            if (contact.getFirstName().equals(firstName))
+            {
+                return contact;
+            }
+        }
+        return  null;
+    }
+
+    public Person searchByLastName(String lastName)
+    {
+        for (Person contact : contacts)
+        {
+            if (contact.getLastName().equals(lastName))
+            {
+                return contact;
+            }
+        }
+        return  null;
+    }
+
+    public Person searchByPhoneNumber(String phoneNumber)
+    {
+        for (Person contact : contacts)
+        {
+            if (contact.getPhoneNumber().equals(phoneNumber))
+            {
+                return contact;
+            }
+        }
+        return  null;
+    }
+
+
+    public void listStudents()
+    {
+
     }
 
 
