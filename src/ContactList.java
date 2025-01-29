@@ -30,24 +30,24 @@ public class ContactList {
 
     public void sort(int sortBy) {
         for (int i = 0; i < contacts.size() - 1; i++) {
-            for (int j = 0; j < contacts.size() - 1; j++) {
+            for (int j = 0; j < contacts.size() - 1 - i; j++) {
                 Person next = contacts.get(j + 1);
                 Person current = contacts.get(j);
+                boolean canSwap = false;
 
                 if (sortBy == 0 && (current.getFirstName().compareTo(next.getFirstName()) < 0)) {
-                    Person mid = contacts.get(j);
-                    contacts.set(j, contacts.get(j + 1));
-                    contacts.set(j + 1, mid);
+                    canSwap = true;
                 } else if (sortBy == 1 && current.getLastName().compareTo(next.getLastName()) < 0) {
-                    Person mid = contacts.get(j);
-                    contacts.set(j, contacts.get(j + 1));
-                    contacts.set(j + 1, mid);
+                    canSwap = true;
                 } else if (sortBy == 2 && current.getPhoneNumber().compareTo(next.getPhoneNumber()) < 0) {
-                    Person mid = contacts.get(j);
-                    contacts.set(j, contacts.get(j + 1));
-                    contacts.set(j + 1, mid);
+                   canSwap = true;
                 }
 
+               if (canSwap)
+               {
+                  contacts.set(j, next);
+                  contacts.set(j + 1, current);
+               }
 
             }
 
@@ -93,24 +93,27 @@ public class ContactList {
 
     }
 
+    public void printInstuctions()
+    {
+        System.out.println("Menu:");
+        System.out.println("1. Add contact");
+        System.out.println("2. List all contacts by first name");
+        System.out.println("3. List all contacts by last name");
+        System.out.println("4. List all contacts by phone Number");
+        System.out.println("5. List all student");
+        System.out.println("6. Search by first name");
+        System.out.println("7. Search by last name");
+        System.out.println("8. Search by phone number");
+        System.out.println("0. Exit");
+        System.out.println(" Enter your choice: ");
+    }
+
     public void run() {
 
         Scanner scanner = new Scanner(System.in);
         int choice;
         do {
-
-
-            System.out.println("Menu:");
-            System.out.println("1. Add contact");
-            System.out.println("2. List all contacts by first name");
-            System.out.println("3. List all contacts by last name");
-            System.out.println("4. List all contacts by phone Number");
-            System.out.println("5. List all student");
-            System.out.println("6. Search by first name");
-            System.out.println("7. Search by last name");
-            System.out.println("8. Search by phone number");
-            System.out.println("0. Exit");
-            System.out.println(" Enter your choice: ");
+            printInstuctions();
             choice = scanner.nextInt();
             scanner.nextLine();
 
